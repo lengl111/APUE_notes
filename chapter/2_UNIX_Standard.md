@@ -68,3 +68,6 @@
 	- 有些`name`会返回一个不确定的值，这通过返回 -1 来体现，同时不改变`errno`	
 
   	![limits](../imgs/standard/limits.JPG) 
+7. 功能测试宏：  
+7.1. gcc  -D_XXXX=111  file.c  -o file   //编译时定义 #defile XXXX 1   
+7.2  gcc   -std=c99 file.c -o file   //用1999 ISO C 标准
