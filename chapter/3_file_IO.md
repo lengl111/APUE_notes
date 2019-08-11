@@ -222,37 +222,37 @@ void test_open_creat()
 
 	对于普通文件，写操作从文件的当前偏移量处开始。如果打开文件时指定了`O_APPEND`选项，则每次写操作之前，都会将文件偏移量设置在文件的当前结尾处。在一次成功写之后，该文件偏移量增加实际写的字节数。
 
-4. 测试`lseek,read,write`。在 `main`函数中调用 `test_lseek_read_write`函数：
-
-	```
+4. 测试`lseek,read,write`。在 `main`函数中调用 `test_lseek_read_write`函数：  
+```
 void test_lseek_read_write()
 {
-    M_TRACE("---------  Begin test_lseek_read_write()  ---------\n");
-    int fd=My_open_with_mode("test",O_RDWR|O_TRUNC|O_CREAT,S_IRUSR|S_IWUSR);  // 读写打开，并截断
-    if(-1==fd)  return; // 文件打开失败
-    char read_buffer[20];
-    char write_buffer[10];
+    M_TRACE("---------  Begin test_lseek_read_write()  ---------\n");  
+    int fd=My_open_with_mode("test",O_RDWR|O_TRUNC|O_CREAT,S_IRUSR|S_IWUSR);  // 读写打开，并截断  
+    if(-1==fd)  return; // 文件打开失败  
+    char read_buffer[20];  
+    char write_buffer[10];  
 
-    strcpy(write_buffer,"123456789"); // write_buffer 填充数字
+    strcpy(write_buffer,"123456789"); // write_buffer 填充数字  
 
-    My_read(fd,read_buffer,20); // 读文件，期望读 20 个字节
-    My_write(fd,write_buffer,10);// 写文件，期望写 10 个字节
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    My_lseek(fd,0,SEEK_SET);// 定位文件到头部
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    My_lseek(fd,10,SEEK_END);// 定位文件到尾部之后的 10 个字节
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    My_write(fd,write_buffer,10);// 写文件，期望写 10 个字节
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    My_lseek(fd,0,SEEK_SET);// 定位文件到头部
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节
-    close(fd);
-    M_TRACE("---------  End test_lseek_read_write()  ---------\n\n");
+    My_read(fd,read_buffer,20); // 读文件，期望读 20 个字节  
+    My_write(fd,write_buffer,10);// 写文件，期望写 10 个字节  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节  
+    My_lseek(fd,0,SEEK_SET);// 定位文件到头部  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节  
+    My_lseek(fd,10,SEEK_END);// 定位文件到尾部之后的 10 个字节  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节  
+    My_write(fd,write_buffer,10);// 写文件，期望写 10 个字节  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节    
+    My_lseek(fd,0,SEEK_SET);// 定位文件到头部  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节  
+    My_read(fd,read_buffer,20);// 读文件，期望读 20 个字节  
+    close(fd);  
+    M_TRACE("---------  End test_lseek_read_write()  ---------\n\n");  
 
-}
-	```
- 	 ![lseek_read_write](../imgs/file_IO/lseek_read_write.JPG) 
+}  
+```
+ 
+![lseek_read_write](../imgs/file_IO/lseek_read_write.JPG) 
 
 	测试序列为：
 	- 开始文件为空，所以读取20个字节的`read`只读取0
