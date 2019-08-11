@@ -77,6 +77,7 @@ linux登陆：
 	- 任何函数都不会将`errno`的值清零，且在`<errno.h>`中定义的所有常量都不为0
 	errno 从1开始定义的。
 	定义的头文件路径:/usr/include/asm-generic/errno.h ,其中errno.h 包含errno-base.h (1~34定义其中）。
+	errno.h中有extern  int  errno的声明，但其正在的定义在glibc中。
 
 2. `strerror/perror`函数:用于处理错误信息
 
