@@ -1,4 +1,4 @@
-# UNIX 标准及实现
+# 第2章 UNIX 标准及实现
 
 ## UNIX 标准
 
@@ -14,9 +14,10 @@
 	- SVR4(UNIX System V Release 4)
 	- 4.4 BSD(Berkeley Software Distribution)
 	- FreeBSD
-	- Linux
+	- **Linux**
 	- Mac OS X
 	- Solaris
+      不同操作系统实现上面三种标准定义的接口。
 
 ## 限制
 
