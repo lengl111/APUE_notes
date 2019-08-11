@@ -55,7 +55,9 @@
 			- `S_IXGRP`：组执行			
 			- `S_IROTH`：其他读
 			- `S_IWOTH`：其他写
-			- `S_IXOTH`：其他执行 
+			- `S_IXOTH`：其他执行   
+			**注意：**  
+			> 只有在指定了O_CREAT 第三个参数才有效，否则mode忽略。
 
 	- 对于`openat`函数，被打开的文件名由`fd`和`path`共同决定：
 		- 如果`path`指定的是绝对路径，此时`fd`被忽略。`openat`等价于`open`
@@ -95,24 +97,24 @@
 	- 它以只写方式打开，因此若要读取该文件，则必须先关闭，然后重新以读方式打开。
 	- 若文件已存在则将文件截断为0。
 
-4. 打开和创建文件的测试。在 `main`函数中调用`test_open_creat()`函数：
+4. 打开和创建文件的测试。在 `main`函数中调用`test_open_creat()`函数:  
 
 	```
-void test_open_creat()
-{
-    M_TRACE("---------  Begin test_open_creat()  ---------\n");
-    My_open("./test1",O_RDWR); // 一个存在的文件
-    My_open("./no_such_file1",O_RDWR);  // 一个不存在的文件
-    My_open_with_mode("./test2",O_RDWR,S_IRUSR|S_IWUSR); // 一个存在的文件
-    My_open_with_mode("./no_such_file2",O_RDWR,S_IRUSR|S_IWUSR); // 一个不存在的文件
-    My_open_with_mode("./test3",O_RDWR|O_CREAT,S_IRUSR|S_IWUSR); // 一个存在的文件 ，带 O_CREAT 标志
-    My_open_with_mode("./no_such_file3",O_RDWR|O_CREAT,S_IRUSR|S_IWUSR); // 一个不存在的文件 ，带 O_CREAT 标志
-    My_open_with_mode("./test4",O_RDWR|O_CREAT|O_EXCL,S_IRUSR|S_IWUSR); // 一个存在的文件 ，带 O_CREAT|O_EXCL 标志
-    My_open_with_mode("./no_such_file4",O_RDWR|O_CREAT|O_EXCL,S_IRUSR|S_IWUSR); // 一个不存在的文件，带 O_CREAT|O_EXCL 标志
-    My_creat("./test5",S_IRUSR|S_IWUSR); // 一个存在的文件
-    My_creat("./no_such_file5",S_IRUSR|S_IWUSR); // 一个不存在的文件
-    M_TRACE("---------  End test_open_creat()  ---------\n\n");
-}
+void test_open_creat()  
+{  
+    M_TRACE("---------  Begin test_open_creat()  ---------\n");  
+    My_open("./test1",O_RDWR); // 一个存在的文件  
+    My_open("./no_such_file1",O_RDWR);  // 一个不存在的文件  
+    My_open_with_mode("./test2",O_RDWR,S_IRUSR|S_IWUSR); // 一个存在的文件  
+    My_open_with_mode("./no_such_file2",O_RDWR,S_IRUSR|S_IWUSR); // 一个不存在的文件  
+    My_open_with_mode("./test3",O_RDWR|O_CREAT,S_IRUSR|S_IWUSR); // 一个存在的文件 ，带 O_CREAT 标志  
+    My_open_with_mode("./no_such_file3",O_RDWR|O_CREAT,S_IRUSR|S_IWUSR); // 一个不存在的文件 ，带 O_CREAT 标志  
+    My_open_with_mode("./test4",O_RDWR|O_CREAT|O_EXCL,S_IRUSR|S_IWUSR); // 一个存在的文件 ，带 O_CREAT|O_EXCL 标志  
+    My_open_with_mode("./no_such_file4",O_RDWR|O_CREAT|O_EXCL,S_IRUSR|S_IWUSR); // 一个不存在的文件，带 O_CREAT|O_EXCL 标志  
+    My_creat("./test5",S_IRUSR|S_IWUSR); // 一个存在的文件  
+    My_creat("./no_such_file5",S_IRUSR|S_IWUSR); // 一个不存在的文件  
+    M_TRACE("---------  End test_open_creat()  ---------\n\n");  
+}  
 	```
   	![open_creat](../imgs/file_IO/open_creat.JPG) 
 
