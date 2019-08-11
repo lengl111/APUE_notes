@@ -99,7 +99,7 @@
 
 4. 打开和创建文件的测试。在 `main`函数中调用`test_open_creat()`函数:  
 
-	```
+```
 void test_open_creat()  
 {  
     M_TRACE("---------  Begin test_open_creat()  ---------\n");  
@@ -115,7 +115,7 @@ void test_open_creat()
     My_creat("./no_such_file5",S_IRUSR|S_IWUSR); // 一个不存在的文件  
     M_TRACE("---------  End test_open_creat()  ---------\n\n");  
 }  
-	```
+```
   	![open_creat](../imgs/file_IO/open_creat.JPG) 
 
 	可以看到：
