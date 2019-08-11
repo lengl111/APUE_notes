@@ -16,7 +16,7 @@
 	- FreeBSD
 	- **Linux**
 	- Mac OS X
-	- Solaris
+	- Solaris\
       不同操作系统实现上面三种标准定义的接口。
 
 ## 限制
