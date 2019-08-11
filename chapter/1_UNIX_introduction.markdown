@@ -144,3 +144,6 @@
 3. 运行 `shell` 命令 `time` 可以获取进程的时钟时间、用户时间和系统时间。`time`的参数请参考 `man`手册
 
   ![time_command](../imgs/introduction/time_command.JPG) 
+  
+## 五、系统调用与库函数的区别：
+   ![](../imgs/introduction/sys_and_lib_diff.jpg)
