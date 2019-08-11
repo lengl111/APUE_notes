@@ -98,7 +98,12 @@
 
   	![errno handle](../imgs/introduction/errno.JPG) 
 
-3. 出错恢复：可以将`<errno.h>`中定义的错误分成两类：
+3. `linux支持多线程存取errno` 其定义：
+   ```
+   extern int * __errno_location(void);
+   #define errno (*__errno_location())
+   ```
+4. 出错恢复：可以将`<errno.h>`中定义的错误分成两类：
 	- 致命性错误：此类错误无法恢复。最多只能在屏幕上打印一条出错消息或者将出错消息写入日志，然后退出。
 	- 非致命性错误：此类错误可以妥善处理。大多数非致命性错误时暂时的（比如资源短缺）
 
