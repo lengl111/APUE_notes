@@ -116,20 +116,20 @@ void test_open_creat()
     M_TRACE("---------  End test_open_creat()  ---------\n\n");  
 }  
 ```
-  	![open_creat](../imgs/file_IO/open_creat.JPG) 
+![open_creat](../imgs/file_IO/open_creat.JPG) 
 
-	可以看到：
+可以看到：
 
-	- 若文件存在：
-		- 简单的`open()`成功打开
-		- 带`O_CREAT`选项的`open()`成功打开
-		- 带`O_CREAT|O_EXCL`选项的`open()`打开失败
-		- `creat()`成功打开并且将文件截断为0
-	- 若文件不存在：
-		- 简单的`open()`打开失败
-		- 带`O_CREAT`选项的`open()`成功创建文件，打开并且将文件截断为0
-		- 带`O_CREAT|O_EXCL`选项的`open()`成功创建文件，打开并且将文件截断为0
-		- `creat()`成功创建文件，打开并且将文件截断为0
+- 若文件存在：
+   - 简单的`open()`成功打开
+   - 带`O_CREAT`选项的`open()`成功打开
+   - 带`O_CREAT|O_EXCL`选项的`open()`打开失败
+   - `creat()`成功打开并且将文件截断为0
+- 若文件不存在：
+   - 简单的`open()`打开失败
+   - 带`O_CREAT`选项的`open()`成功创建文件，打开并且将文件截断为0
+   - 带`O_CREAT|O_EXCL`选项的`open()`成功创建文件，打开并且将文件截断为0
+   - `creat()`成功创建文件，打开并且将文件截断为0
 	
 
 5. `close`函数：关闭文件
