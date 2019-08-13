@@ -365,12 +365,12 @@ void test_pread_pwrite()
 	```
 ![pread_pwrite](../imgs/file_IO/pread_pwrite.JPG)  
 
-**总结**：  
-     > 原子性操作：  
-       - 原子打开：  
-     	`open（"path", O_CREAT|O_EXCL,...);`  
-       - 原子读写：  
-     	`pread/pwrite` 
+**总结**:
+	原子性操作：  
+		- 原子打开：  
+     			`open（"path", O_CREAT|O_EXCL,...);`  
+		- 原子读写：  
+     			`pread/pwrite` 
 	       
 4. `dup/dup2`：复制一个现有的文件描述符：
 
