@@ -499,11 +499,10 @@ void test_fcntl()
 ```
 
  ![fcntl](../imgs/file_IO/fcntl.JPG) 
-
-	注意：
-	- Linux 下，不支持文件状态标志： `F_EXEC与`， `F_SEARCH`
-	- `(result&O_ACCMODE)==O_RDONLY` 表达式中， `&`优先级较低
-	- `F_SETFL`命令：当文件读打开时，你无法将文件状态标志修改为`O_WRONLY`、`O_WRWR`这两种中任何一个。你只能修改：`O_APPEND`、`O_NONBLOCK`、`O_SYNC`、`O_DSYNC`、`O_RSYNC`、`F_ASYNC`、`O_ASYNC`等标志
+ 	注意：
+		- Linux 下，不支持文件状态标志： `F_EXEC与`， `F_SEARCH`
+		- `(result&O_ACCMODE)==O_RDONLY` 表达式中， `&`优先级较低
+		- `F_SETFL`命令：当文件读打开时，你无法将文件状态标志修改为`O_WRONLY`、`O_WRWR`这两种中任何一个。你只能修改：`O_APPEND`、`O_NONBLOCK`、`O_SYNC`、`O_DSYNC`、`O_RSYNC`、`F_ASYNC`、`O_ASYNC`等标志
 
 7. `/dev/fd`目录：该目录下是名为`0、1、2`等的文件。打开文件`/dev/fd/n`等效于复制描述符（假定描述符`n`是打开的）
 	- `fd=open("/dev/fd/0",mod)`：`fd`和文件描述符`0`共享同一个文件表项。
