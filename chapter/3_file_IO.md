@@ -397,8 +397,7 @@ void test_pread_pwrite()
 	任何情况下，这个返回的新的文明描述符与参数`fd`共享同一个文件表项（因此文件状态标志以及文件偏移量都会共享）。	任何情况下，这个返回的新的文明描述符的`close-on-exec`标志总是被清除
 
 	示例：在 `main`函数中调用`test_dup_dup2`函数:
-
-	```
+```
 void test_dup_dup2()  
 {  
     M_TRACE("---------  Begin test_dup_dup2()  ---------\n");  
@@ -410,10 +409,8 @@ void test_dup_dup2()
     My_dup2(101,0); // fd 0 已经被打开的, fd 100 未被打开  
     M_TRACE("---------  End test_dup_dup2()  ---------\n\n");  
 }  
-
-	```
-
-  	![dup_dup2](../imgs/file_IO/dup_dup2.JPG) 
+```
+  ![dup_dup2](../imgs/file_IO/dup_dup2.JPG) 
 
 5. UNIX操作系统在内核中设有缓冲区，大多数磁盘 I/O 都通过缓冲区进行。当我们想文件写入数据时，内核通常都首先将数据复制到缓冲区中，然后排入队列，晚些时候再写入磁盘。这种方式称为延迟写。
 	- 当内核需要重用缓冲区来存方其他数据时，它会把所有延迟写的数据库写入磁盘
