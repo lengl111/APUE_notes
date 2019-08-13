@@ -336,7 +336,9 @@ void test_lseek_read_write()
 		- 成功：读到的字节数/已写的字节数
 		- 失败： -1
 
-	调用`pread`相当于先调用`lseek`再调用`read`.但是调用`pread`时，无法中断其定位和读操作，并且不更新当前文件偏移量；调用`pwrite`相当于先调用`lseek`再调用`write`.但是调用`pwrite`时，无法中断其定位和写操作，并且不更新当前文件偏移量
+	调用`pread`相当于先调用`lseek`再调用`read`.但是调用`pread`时，无法中断其定位和读操作，并且不更新当前文件偏移量；  
+	调用`pwrite`相当于先调用`lseek`再调用`write`.但是调用`pwrite`时，无法中断其定位和写操作，并且不更新当前文件偏移量。  
+	这两个api 不会改比文件的偏移量。
 
 	示例：在 `main`函数中调用 `test_pread_pwrite` 函数：
 
@@ -361,8 +363,13 @@ void test_pread_pwrite()
     M_TRACE("---------  End test_pread_pwrite()  ---------\n\n");
 }
 	```
- 	 ![pread_pwrite](../imgs/file_IO/pread_pwrite.JPG) 
-
+![pread_pwrite](../imgs/file_IO/pread_pwrite.JPG) 
+ **总结**：
+     原子性操作：  
+        - 原子打开：  
+	    open（"path", O_CREAT|O_EXCL,...);
+	- 原子读写： 
+	    pread/pwrite 
 4. `dup/dup2`：复制一个现有的文件描述符：
 
 	```
