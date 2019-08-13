@@ -465,40 +465,40 @@ void test_dup_dup2()
 
 	示例：在 `main`函数中调用`test_fcntl()`函数:
 	
-	```
-void test_fcntl()
-{
-    M_TRACE("---------  Begin test_fcntl()  ---------\n");
-    int fd=openat(AT_FDCWD,"test.txt",O_WRONLY|O_CREAT,S_IRUSR|S_IWUSR);;
-    if(-1==fd) // 打开文件失败
-        return ;
-    //测试 My_fcntl_GETFD 和 My_fcntl_DUPFD、My_fcntl_DUPFD_CLOEXEC
-    My_fcntl_GETFD(My_fcntl_DUPFD(fd,10));
-    My_fcntl_GETFD(My_fcntl_DUPFD(fd,0));
-    My_fcntl_GETFD(My_fcntl_DUPFD_CLOEXEC(fd,10));
+```
+void test_fcntl()  
+{  
+    M_TRACE("---------  Begin test_fcntl()  ---------\n");  
+    int fd=openat(AT_FDCWD,"test.txt",O_WRONLY|O_CREAT,S_IRUSR|S_IWUSR);;  
+    if(-1==fd) // 打开文件失败  
+        return ;  
+    //测试 My_fcntl_GETFD 和 My_fcntl_DUPFD、My_fcntl_DUPFD_CLOEXEC  
+    My_fcntl_GETFD(My_fcntl_DUPFD(fd,10));  
+    My_fcntl_GETFD(My_fcntl_DUPFD(fd,0));  
+    My_fcntl_GETFD(My_fcntl_DUPFD_CLOEXEC(fd,10));  
     My_fcntl_GETFD(My_fcntl_DUPFD_CLOEXEC(fd,0));
-    // 测试 My_fcntl_GETFD、My_fcntl_SETFD
-    My_fcntl_GETFD(fd);
-    My_fcntl_SETFD(fd,~FD_CLOEXEC);
-    My_fcntl_GETFD(fd);
-    My_fcntl_SETFD(fd,FD_CLOEXEC);
-    My_fcntl_GETFD(fd);
-    // 测试 My_fcntl_GETFL、My_fcntl_SETFL
-    print_fl(fd,My_fcntl_GETFL(fd));
-    My_fcntl_SETFL(fd,O_RDWR);
-    print_fl(fd,My_fcntl_GETFL(fd));
-    My_fcntl_SETFL(fd,O_RDONLY|O_NONBLOCK);
-    print_fl(fd,My_fcntl_GETFL(fd));
-    // 测试 My_fcntl_GETOWN、My_fcntl_SETOWN
-    My_fcntl_GETOWN(fd);
-    My_fcntl_SETOWN(fd,1);
-    My_fcntl_GETOWN(fd);
-    close(fd);
-    M_TRACE("---------  End test_fcntl()  ---------\n\n");
-}
-	```
+    // 测试 My_fcntl_GETFD、My_fcntl_SETFD  
+    My_fcntl_GETFD(fd);  
+    My_fcntl_SETFD(fd,~FD_CLOEXEC);  
+    My_fcntl_GETFD(fd);  
+    My_fcntl_SETFD(fd,FD_CLOEXEC);  
+    My_fcntl_GETFD(fd);  
+    // 测试 My_fcntl_GETFL、My_fcntl_SETFL  
+    print_fl(fd,My_fcntl_GETFL(fd));  
+    My_fcntl_SETFL(fd,O_RDWR);  
+    print_fl(fd,My_fcntl_GETFL(fd));  
+    My_fcntl_SETFL(fd,O_RDONLY|O_NONBLOCK);  
+    print_fl(fd,My_fcntl_GETFL(fd));  
+    // 测试 My_fcntl_GETOWN、My_fcntl_SETOWN  
+    My_fcntl_GETOWN(fd);  
+    My_fcntl_SETOWN(fd,1);  
+    My_fcntl_GETOWN(fd);  
+    close(fd);  
+    M_TRACE("---------  End test_fcntl()  ---------\n\n");  
+}  
+```
 
- 	 ![fcntl](../imgs/file_IO/fcntl.JPG) 
+ ![fcntl](../imgs/file_IO/fcntl.JPG) 
 
 	注意：
 	- Linux 下，不支持文件状态标志： `F_EXEC与`， `F_SEARCH`
