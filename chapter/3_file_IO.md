@@ -389,7 +389,8 @@ void test_pread_pwrite()
 
   	![dup_file_descriptor](../imgs/file_IO/dup_file_descriptor.JPG)
 
-	对于`dup`函数，返回的新的文件描述符一定是当前可用的文件描述符中最小的数字。对于`dup2`函数：
+	对于`dup`函数，返回的新的文件描述符一定是当前可用的文件描述符中最小的数字。  
+	对于`dup2`函数：
 	- 如果 `fd2`已经是被打开的文件描述符且不等于`fd`，则先将其关闭，然后再打开（<font color='red'>注意关闭再打开是一个原子操作</font>）
 	- 如果 `fd2`等于`fd`，则直接返回`fd2`（也等于`fd`），而不作任何操作
 
@@ -398,17 +399,17 @@ void test_pread_pwrite()
 	示例：在 `main`函数中调用`test_dup_dup2`函数:
 
 	```
-void test_dup_dup2()
-{
-    M_TRACE("---------  Begin test_dup_dup2()  ---------\n");
-    My_dup(0);  // fd 0 已经被打开的
-    My_dup(100); // fd 100 未被打开
-    My_dup2(0,0);  // fd 0 已经被打开的
-    My_dup2(100,100);  // fd 100 未被打开
-    My_dup2(0,100); // fd 0 已经被打开的, fd 100 未被打开
-    My_dup2(101,0); // fd 0 已经被打开的, fd 100 未被打开
-    M_TRACE("---------  End test_dup_dup2()  ---------\n\n");
-}
+void test_dup_dup2()  
+{  
+    M_TRACE("---------  Begin test_dup_dup2()  ---------\n");  
+    My_dup(0);  // fd 0 已经被打开的  
+    My_dup(100); // fd 100 未被打开    
+    My_dup2(0,0);  // fd 0 已经被打开的  
+    My_dup2(100,100);  // fd 100 未被打开  
+    My_dup2(0,100); // fd 0 已经被打开的, fd 100 未被打开  
+    My_dup2(101,0); // fd 0 已经被打开的, fd 100 未被打开  
+    M_TRACE("---------  End test_dup_dup2()  ---------\n\n");  
+}  
 
 	```
 
