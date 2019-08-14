@@ -67,7 +67,7 @@
 	time_t tv_sec;	// 秒
 	long tv_nsec; 	//纳秒
 		}
-```
+	```
 
 3. UNIX 文件类型：
 	- 普通文件：最常见的文件类型，这种文件包含了某种形式的数据。至于这种数据是二进制还是文本，对内核无区别。普通文件的内容解释由具体的应用程序进行。
@@ -164,7 +164,7 @@
 
 8. `stat`和`lstat`示例：在`main`函数中调用`test_stat_lstat`函数：
 
-	```
+```
 void test_stat_lstat()
 {
     M_TRACE("---------  Begin test_stat_lstat()  ---------\n");
@@ -181,9 +181,9 @@ void test_stat_lstat()
     My_stat("test_stat",&stat_buf); // regular file
     M_TRACE("---------  End test_stat_lstat()  ---------\n\n");
 }
-	```
+```
 
-  	![stat](../imgs/file_dir/stat.JPG) 
+ ![stat](../imgs/file_dir/stat.JPG) 
 
 ## 二、访问测试和文件模式创建屏蔽字
 
@@ -234,7 +234,7 @@ void test_stat_lstat()
 
 3. 示例：测试 `umask`和`access`函数的用法：在`main`函数中调用`test_access_umask` 函数：
 
-	```
+```
 void test_access_umask()
 {
     My_access("/no/exist",F_OK); // no exist
@@ -246,8 +246,8 @@ void test_access_umask()
     My_umask(S_IRUSR|S_IRGRP|S_IROTH);
     print_new_file_mode("test_umask2") ;// new umask
 }
-	```
-  	![access_umask](../imgs/file_dir/access_umask.JPG) 
+```
+ ![access_umask](../imgs/file_dir/access_umask.JPG) 
 
 	可以看到：
 	- `access`函数：对于不存在的文件名访问失败；对没有写权限的名字写访问失败
@@ -352,7 +352,7 @@ void test_access_umask()
 
 4. 示例：在 `main` 函数中调用`test_chmod_chown` 函数：
 
-	```
+```
 void test_chmod_chown()
 {
     const char *file_name="test";
@@ -362,11 +362,11 @@ void test_chmod_chown()
     My_chmod(file_name,S_IRWXU);
     My_chown(file_name,1,1);
 }
-	```
+```
 
-  	![chmod_chown](../imgs/file_dir/chmod_chown.JPG) 
+  ![chmod_chown](../imgs/file_dir/chmod_chown.JPG) 
 
-	可以看到：
+可以看到：
 	- 修改文件所属的用户和组，需要超级用户权限。普通用户无法修改，即使该用户就是该文件的所有者也不行
 
 ## 四、修改文件长度
@@ -402,7 +402,7 @@ void test_chmod_chown()
 
 3. 示例：在`main`函数中调用`test_truncate_size`函数：
 
-	```
+```
 void test_truncate_size()
 {
     M_TRACE("---------  Begin test_truncate_size()  ---------\n");
@@ -430,11 +430,11 @@ void test_truncate_size()
     close(fd);
     M_TRACE("---------  End test_truncate_size()  ---------\n");
 }
-	```
+```
 
-  	![truncate](../imgs/file_dir/truncate.JPG) 
+![truncate](../imgs/file_dir/truncate.JPG) 
 
-	可以看到：
+可以看到：
 	- 对于文件空洞，它不占用任何磁盘空间；空洞部分读出的内容全为0
 	- 对于非常小的文件，比如这里的 8 字节文字，磁盘分配了 8个块（4kb）。
 
@@ -564,7 +564,7 @@ void test_truncate_size()
 
 6. `link/unlink`实例：在`main`函数中调用`test_link_unlink`函数
 
-	```
+```
 void test_link_unlink()
 {
     M_TRACE("---------  Begin test_link_unlink()  ---------\n");
@@ -583,8 +583,8 @@ void test_link_unlink()
     un_prepare_file("test1");
     M_TRACE("---------  End test_link_unlink()  ---------\n\n");
 }
-	```
-	  ![link_unlink](../imgs/file_dir/link_unlink.JPG) 
+```
+ ![link_unlink](../imgs/file_dir/link_unlink.JPG) 
 
 	可以看到：
 	- `test`和`new_test`这两个文件共享一个 i 结点。因此该节点的 硬链接数为2
@@ -706,7 +706,7 @@ void test_link_unlink()
 
 11. 符号链接示例：在`main`函数中调用`test_symlink_readlink`函数：
 
-	```
+```
 void test_symlink_readlink()
 {
     M_TRACE("---------  Begin test_symlink_readlink()  ---------\n");
@@ -726,9 +726,9 @@ void test_symlink_readlink()
 }
 
 
-	```
+```
 
-	![symlink](../imgs/file_dir/symlink.JPG)  
+![symlink](../imgs/file_dir/symlink.JPG)  
 
 	可以看到：
 	- 符号链接文件的内容就是它链接到的那个文件的绝对路径名，其中路径名字符序列不包含 `null`字节
@@ -808,7 +808,7 @@ void test_symlink_readlink()
 
 3. 示例：在 `main`函数中调用`test_utimes`函数： 
 
-	```
+```
 void test_utimes()
 {
     M_TRACE("---------  Begin test_utimes()  ---------\n");
@@ -830,9 +830,9 @@ void test_utimes()
     un_prepare_file("test"); // 删除 test 文件
     M_TRACE("---------  End test_utimes()  ---------\n\n");
 }
-	```
+```
 
-	  ![utimes](../imgs/file_dir/utimes.JPG) 	
+![utimes](../imgs/file_dir/utimes.JPG) 	
 	可以看到：
 	- `st_ctim`是由系统自动维护的，程序员无法手动指定
 
@@ -957,7 +957,7 @@ void test_utimes()
 
 5. 示例： 在`main`函数中调用 `test_dir_operations` 函数：
 
-	```
+```
 void test_dir_operations()
 {
     M_TRACE("---------  Begin test_dir_operations()  ---------\n");
@@ -992,6 +992,6 @@ void test_dir_operations()
     My_rmdir("test"); // 必须非空才能删除成功
     M_TRACE("---------  End test_dir_operations()  ---------\n\n");
 }
-	```
+```
 
-	  ![dir_function](../imgs/file_dir/dir_function.JPG) 
+![dir_function](../imgs/file_dir/dir_function.JPG) 
