@@ -184,6 +184,8 @@ void test_stat_lstat()
 ```
 
  ![stat](../imgs/file_dir/stat.JPG) 
+ 关于设置用户的解释：![](https://blog.csdn.net/danchu/article/details/37831069)
+ 
 
 ## 二、访问测试和文件模式创建屏蔽字
 
