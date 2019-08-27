@@ -488,7 +488,8 @@ void test_fopen_fwide_setvbuf()
 			- `pos`：存放偏移量的缓冲区
 		- 返回值：
 			- 成功： 返回 0
-			- 失败： 返回非 0
+			- 失败： 返回非 0  
+		- `fgetpos/fsetpos`等价与tell() 和fseek() 设置 **SEEK_SET**  
 
 11. 示例:在`main`函数中调用`test_get_put_seek` 函数：
 
