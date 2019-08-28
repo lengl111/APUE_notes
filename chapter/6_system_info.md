@@ -535,7 +535,7 @@ void test_system_file()
 
 11. 示例：在`main`函数中调用`test_times`函数：
 
-	```
+```
 void test_times()
 {
     M_TRACE("---------  Begin test_times()  ---------\n");
@@ -570,6 +570,6 @@ void test_times()
     My_mktime(tm_tm);
     M_TRACE("---------  End test_times()  ---------\n\n");
 }	
-	```
+```
 
-  	![time](../imgs/system_info/time.JPG)  
+  ![time](../imgs/system_info/time.JPG)  
