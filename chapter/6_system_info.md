@@ -44,7 +44,10 @@
 		- 成功：返回`passwd`结构的指针
 		- 失败：返回`NULL`
 
-	注意：`getpwuid/getpwnam`函数返回的 `struct passwd`结构通常是函数内部的静态变量，因此多次调用上面的函数，该静态变量会被覆写。
+	注意： 
+	  - `getpwuid/getpwnam`函数返回的 `struct passwd`结构通常是函数内部的静态变量，因此多次调用上面的函数，该静态变量会被覆写。  
+	  - `struct passwd` 结构指针返回的是static 数据区不是malloc的堆区，不能调用free释放。
+	  
 
 3. 查看整个口令文件，使用下面的函数：
 	
