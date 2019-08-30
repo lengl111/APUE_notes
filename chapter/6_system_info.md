@@ -573,3 +573,4 @@ void test_times()
 ```
 
   ![time](../imgs/system_info/time.JPG)  
+  ![funcs](../imgs/system_info/time_funcs.jpg)
