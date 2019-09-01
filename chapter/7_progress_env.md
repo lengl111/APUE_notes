@@ -108,7 +108,7 @@ void test_exit_atexit()
 
 
 7.  C程序的启动和终止
-	- `exit`函数首先调用各终止处理程序，然后关闭（通过`fclose`）所打开的流。
+	- `exit`函数首先调用各终止处理程序，然后关闭（通过`fclose`）所打开的流。(默认也是这个操作，只要不显示调用_exit/_Exit）
 	- 内核执行程序的唯一方法是调用一个`exec`函数
 	- 内核自愿终止的唯一方法是显式或者隐式（通过调用`exit`函数）的调用`_exit`或者`_Exit`
 	
@@ -120,6 +120,7 @@ void test_exit_atexit()
 		- 数组的最后一项是`null`
 	- 全局变量`envrion`包含了该指针数组的地址：`extern char **envrion`。我们称`environ`为环境指针，它位于头文件`unistd.h`中
 	- 按照惯例，环境字符串由`name=value`这种格式的字符串组成
+- char ** environ 定义在
 
 	![env_table](../imgs/progress_env/env_table.JPG) 	
 
