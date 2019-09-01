@@ -84,7 +84,7 @@
 
 6. 示例：在`main`函数中调用`test_exit_atexit`函数：
 
-	```
+```
 void test_exit_atexit()
 {
     M_TRACE("---------  Begin test_exit_atexit()  ---------\n");
@@ -94,17 +94,17 @@ void test_exit_atexit()
 //    _exit(265);  // 三选一
     M_TRACE("---------  End test_exit_atexit()  ---------\n\n");
 }
-	```
+```
 	可以看到：
 	- 终止处理程序`exit handler` 调用顺序是逆序的
 	- 终止处理程序`exit handler` 多次注册则调用多次
 	- 退出码是除以256的余数
 
-	![atexit](../imgs/progress_env/atexit.JPG) 
+![atexit](../imgs/progress_env/atexit.JPG) 
 
 	如果将 `exit(258);`替换成`_Exit(260)`，则：
 	- 不会再调用终止处理程序`exit handler` 
-	![_Exit](../imgs/progress_env/_Exit.JPG) 
+![_Exit](../imgs/progress_env/_Exit.JPG) 
 
 
 7.  C程序的启动和终止
