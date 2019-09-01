@@ -112,7 +112,7 @@ void test_exit_atexit()
 	- 内核执行程序的唯一方法是调用一个`exec`函数
 	- 内核自愿终止的唯一方法是显式或者隐式（通过调用`exit`函数）的调用`_exit`或者`_Exit`
 	
-	![program_start_stop](../imgs/progress_env/main_start.jpg) 
+	![program_start_stop](../imgs/progress_env/main_exit.jpg) 
 
 8. 每个程序都会接收一张环境表。
 	- 与参数表一样，环境表也是一个字符指针数组
