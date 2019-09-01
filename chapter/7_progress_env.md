@@ -518,6 +518,6 @@ void test_getrlimit_setrlimit()
 }
 ```
 
-![getrlimit](../imgs/progress_env/getrlimit.JPG) 
+  ![getrlimit](../imgs/progress_env/getrlimit.JPG) 
 
 	注意： `setrlimit`需要超级用户的权限，否则报错。
