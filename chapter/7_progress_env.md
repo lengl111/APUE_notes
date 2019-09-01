@@ -493,7 +493,7 @@ void test_setjmp_longjmp()
 
 2. 示例：在`main`函数中调用`test_getrlimit_setrlimit`函数：
 
-	```
+```
 void test_getrlimit_setrlimit()
 {
     M_TRACE("---------  Begin test_getrlimit_setrlimit()  ---------\n");
@@ -516,8 +516,8 @@ void test_getrlimit_setrlimit()
     My_getrlimit(RLIMIT_NICE,&buf);
     M_TRACE("---------  End test_getrlimit_setrlimit()  ---------\n\n");
 }
-	```
+```
 
-	![getrlimit](../imgs/progress_env/getrlimit.JPG) 
+![getrlimit](../imgs/progress_env/getrlimit.JPG) 
 
 	注意： `setrlimit`需要超级用户的权限，否则报错。
