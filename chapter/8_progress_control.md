@@ -159,7 +159,7 @@ void test_fork()
 	- `vfork`保证子进程优先运行，在子进程调用`exec`或者`exit`之后父进程才可能被调度运行
 	> 当子进程调用`exec`或者`exit`中的任何一个时，父进程会恢复运行，在此之前内核会使父进程处于休眠状态.
 	- vfork子进程退出不能调`return`只能调exit，调return会释放和父进程共享的栈，释放之后父进程还去调会导致死循环等未知错误。  
-          ![vfork子进程return会导致父进程再执行时死循环的原因](https://blog.51cto.com/760470897/1790060)
+          ![vfork子进程return会导致父进程再执行时死循环的原因](xxx) `https://blog.51cto.com/760470897/1790060`
 
 8. 示例：在`main`函数中调用`test_vfork`函数：
 
