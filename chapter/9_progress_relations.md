@@ -35,7 +35,7 @@
 2. 网络登录：对于网络登录，所有登录都是经由内核的网络接口驱动程序。
 	- 在`BSD`系统中，由`init`执行`shell`脚本`/etc/rc`，此`shell`脚本启动`inetd`守护进程。由`inetd`负责处理网络登录
 	- 在`Linux`系统中，使用`xinetd`代替`inetd`进程
-3. ![linux：终端（Terminal）基本概念&终端登录过程详解] `https://blog.csdn.net/summy_J/article/details/73870353)`
+3. ![linux：终端（Terminal）基本概念&终端登录过程详解](.) `https://blog.csdn.net/summy_J/article/details/73870353)`
 
 ## 进程组
 
